@@ -1,5 +1,5 @@
-﻿Source: lingmo-quick
-Section: libs
+Source: lingmo-quick
+Section: utils
 Priority: optional
 Maintainer: Lingmo OS Team <team@lingmo.org>
 Build-Depends:
@@ -7,23 +7,12 @@ Build-Depends:
     debhelper-compat (= 13),
     pkg-config,
     qt6-base-dev (>= 6.5),
-    qt6-declarative-dev, lingmo-appearance-dev,
 Standards-Version: 4.6.2
 Homepage: https://github.com/Matrinsoft/lingmo-quick
 Rules-Requires-Root: no
 
-Package: liblingmo-quick1
+Package: lingmo-quick
 Architecture: any
-Depends:
-    ,
-    ,
-Description: Lingmo Quick SDK
- Lingmo Desktop Lingmo Quick SDK.
-
-Package: liblingmo-quick-dev
-Architecture: any
-Depends:
-    liblingmo-quick1 (= ),
-    ,
-Description: Lingmo Quick SDK - development files
- This package contains the development files.
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: lingmo-quick
+ Lingmo Desktop lingmo-quick.
