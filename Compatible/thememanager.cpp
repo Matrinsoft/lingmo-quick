@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright (C) 2021 LingmoOS Team.
  *
  * Author:     lingmo <lingmo@lingmo.org>
@@ -26,9 +26,9 @@
 #include <QDBusServiceWatcher>
 #include <QDebug>
 
-static const QString Service = "com.lingmo.Settings";
+static const QString Service = "org.lingmo.Settings";
 static const QString ObjectPath = "/Theme";
-static const QString Interface = "com.lingmo.Theme";
+static const QString Interface = "org.lingmo.Theme";
 
 ThemeManager::ThemeManager(QObject* parent)
     : QObject(parent)

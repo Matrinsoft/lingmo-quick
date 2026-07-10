@@ -1,4 +1,4 @@
-#include "LingmoTools.h"
+﻿#include "LingmoTools.h"
 
 #include <QClipboard>
 #include <QColor>
@@ -349,7 +349,7 @@ QString LingmoTools::getWallpaperFilePath()
         break;
     }
     case hash_compile_time("lingmo"): {
-        QDBusInterface interface("com.lingmo.Settings",
+        QDBusInterface interface("org.lingmo.Settings",
             "/Theme",
             "org.freedesktop.DBus.Properties",
             QDBusConnection::sessionBus());
@@ -359,9 +359,9 @@ QString LingmoTools::getWallpaperFilePath()
             return QString();
         }
 
-        // 使用 org.freedesktop.DBus.Properties.Get 方法来获取属性
+        // 浣跨敤 org.freedesktop.DBus.Properties.Get 鏂规硶鏉ヨ幏鍙栧睘鎬?
         QDBusReply<QVariant> reply = interface.call("Get",
-            "com.lingmo.Theme", // 接口名
+            "org.lingmo.Theme", // 鎺ュ彛鍚?
             "wallpaper");
 
         if (!reply.isValid()) {
@@ -381,19 +381,19 @@ QString LingmoTools::getWallpaperFilePath()
     switch (hash_(desktop_name.toStdString().c_str())) {
     case hash_compile_time("KDE"): {
         QDBusInterface plasmaShellInterface("org.kde.plasmashell", "/PlasmaShell", "org.kde.PlasmaShell");
-        // 检查接口是否有效
+        // 妫€鏌ユ帴鍙ｆ槸鍚︽湁鏁?
         if (!plasmaShellInterface.isValid()) {
             qDebug() << "Failed to create D-Bus interface.";
             return {};
         }
-        // 调用D-Bus方法获取属性
+        // 璋冪敤D-Bus鏂规硶鑾峰彇灞炴€?
         QDBusReply<QVariantMap> reply = plasmaShellInterface.call("wallpaper", static_cast<uint32_t>(0));
-        // 检查调用是否成功
+        // 妫€鏌ヨ皟鐢ㄦ槸鍚︽垚鍔?
         if (!reply.isValid()) {
             qDebug() << "Failed to call D-Bus method:" << reply.error().message();
             return {};
         }
-        // 获取属性值
+        // 鑾峰彇灞炴€у€?
         QVariantMap properties = reply.value();
         QString imagePath = properties["Image"].toString();
         return imagePath;
